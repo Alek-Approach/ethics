@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ethical, Unethical, or It Depends? | Ethics in a Global World</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #14284b;
+    --navy-deep: #0d1b36;
+    --gold: #c9a227;
+    --gold-soft: #f3e7bd;
+    --paper: #f7f6f2;
+    --card: #ffffff;
+    --ink: #1c2433;
+    --muted: #5a6475;
+    --line: #d9dce3;
+    --yes: #2f7d5b;
+    --no: #b2433a;
+    --depends: #c9a227;
+    --font-head: "Montserrat", "Segoe UI", Arial, sans-serif;
+    --font-body: "Libre Franklin", "Segoe UI", Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+
+  /* ---------- Header ---------- */
+  header {
+    background: var(--navy);
+    color: #fff;
+    padding: clamp(2rem, 6vw, 4.5rem) 1.5rem clamp(2.5rem, 6vw, 4.5rem);
+    border-bottom: 6px solid var(--gold);
+  }
+  .wrap { max-width: 980px; margin: 0 auto; }
+  header p.course { margin: 0 0 1rem; color: var(--gold); font-weight: 600; }
+  h1 {
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: clamp(2rem, 6vw, 3.6rem);
+    line-height: 1.08;
+    margin: 0 0 1rem;
+    letter-spacing: -0.01em;
+  }
+  header p.sub { margin: 0; max-width: 40rem; color: #d6dcea; font-size: 1.2rem; }
+
+  /* ---------- Instructions ---------- */
+  .instructions {
+    background: var(--card);
+    border: 2px solid var(--navy);
+    border-radius: 6px;
+    margin: -2rem auto 0;
+    max-width: 980px;
+    padding: 1.5rem 1.75rem;
+    position: relative;
+    box-shadow: 6px 6px 0 var(--gold);
+  }
+  .instructions h2 { font-family: var(--font-head); font-size: 1.25rem; margin: 0 0 .5rem; color: var(--navy); }
+  .instructions ul { margin: 0; padding-left: 1.25rem; }
+  .instructions li { margin: .25rem 0; }
+  .instructions ul ul { margin-top: .25rem; }
+  .instructions ul ul li { font-weight: 600; color: var(--navy); }
+
+  .toolbar {
+    display: flex; flex-wrap: wrap; gap: .75rem; align-items: center;
+    margin: 1.25rem 0 0; padding-top: 1rem; border-top: 1px solid var(--line);
+  }
+  .timer {
+    font-family: var(--font-head); font-weight: 700; font-size: 1.5rem; color: var(--navy);
+    min-width: 4.5ch; font-variant-numeric: tabular-nums;
+  }
+
+  button { font: inherit; cursor: pointer; }
+  button:focus-visible, summary:focus-visible, textarea:focus-visible {
+    outline: 3px solid var(--gold); outline-offset: 2px;
+  }
+  .btn {
+    background: var(--navy); color: #fff; border: 2px solid var(--navy);
+    padding: .5rem 1rem; border-radius: 4px; font-weight: 600; font-size: 1rem;
+  }
+  .btn:hover { background: var(--navy-deep); }
+  .btn.ghost { background: transparent; color: var(--navy); }
+  .btn.ghost:hover { background: var(--gold-soft); }
+
+  /* ---------- Phrases ---------- */
+  details.phrases {
+    max-width: 980px; margin: 1.5rem auto 0; padding: 0 1.5rem;
+  }
+  details.phrases summary {
+    font-weight: 600; color: var(--navy); cursor: pointer; padding: .5rem 0;
+  }
+  .phrase-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem; padding: .75rem 0 .25rem;
+  }
+  .phrase-grid h3 { font-family: var(--font-head); font-size: 1rem; margin: 0 0 .25rem; color: var(--navy); }
+  .phrase-grid ul { margin: 0; padding-left: 1.1rem; color: var(--muted); font-size: 1rem; }
+
+  /* ---------- Scenarios ---------- */
+  main { max-width: 980px; margin: 0 auto; padding: 1.5rem 1.5rem 4rem; }
+  .scenario {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 8px solid var(--navy);
+    border-radius: 6px;
+    padding: clamp(1.25rem, 3vw, 2.25rem);
+    margin-top: 2rem;
+  }
+  .scenario h2 {
+    font-family: var(--font-head); font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+    margin: 0 0 .25rem; color: var(--navy); line-height: 1.2;
+  }
+  .where { margin: 0 0 1rem; color: var(--muted); font-size: 1rem; }
+  .story p { margin: 0 0 .85rem; max-width: 62ch; }
+  .story p.quote {
+    border-left: 4px solid var(--gold); padding-left: 1rem; font-style: italic; color: var(--navy);
+  }
+
+  .ask { font-family: var(--font-head); font-weight: 700; color: var(--navy); margin: 1.5rem 0 .75rem; font-size: 1.1rem; }
+
+  /* The memorable element: a three-way verdict bar */
+  .verdicts {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0;
+    border: 2px solid var(--navy); border-radius: 6px; overflow: hidden;
+  }
+  .verdict {
+    background: #fff; border: 0; border-right: 2px solid var(--navy);
+    padding: 1rem .5rem; text-align: center; color: var(--navy);
+    display: flex; flex-direction: column; align-items: center; gap: .15rem;
+    transition: background .15s, color .15s;
+  }
+  .verdict:last-child { border-right: 0; }
+  .verdict .label { font-family: var(--font-head); font-weight: 700; font-size: 1.1rem; }
+  .verdict .count { font-family: var(--font-head); font-weight: 800; font-size: 2rem; line-height: 1; font-variant-numeric: tabular-nums; }
+  .verdict .hint { font-size: .85rem; color: var(--muted); }
+  .verdict[data-v="ethical"]:hover { background: #e3f1ea; }
+  .verdict[data-v="depends"]:hover { background: var(--gold-soft); }
+  .verdict[data-v="unethical"]:hover { background: #f6e1de; }
+  .verdict.pulse { animation: pulse .35s ease; }
+  @keyframes pulse { 50% { transform: scale(.97); } }
+
+  .tally-bar {
+    display: flex; height: 14px; margin-top: .6rem; border-radius: 7px; overflow: hidden; background: var(--line);
+  }
+  .tally-bar span { display: block; height: 100%; width: 0; transition: width .3s; }
+  .tally-bar .b-ethical { background: var(--yes); }
+  .tally-bar .b-depends { background: var(--depends); }
+  .tally-bar .b-unethical { background: var(--no); }
+  .tally-row { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: .5rem; font-size: .95rem; color: var(--muted); }
+  .link-btn { background: none; border: 0; color: var(--navy); text-decoration: underline; padding: 0; font-size: .95rem; }
+
+  /* Push + twist */
+  .push {
+    background: var(--gold-soft); border-radius: 6px; padding: 1rem 1.25rem; margin-top: 1.5rem;
+  }
+  .push h3 { margin: 0 0 .35rem; font-family: var(--font-head); font-size: 1.05rem; color: var(--navy); }
+  .push ul { margin: 0; padding-left: 1.2rem; }
+  .push li { margin: .2rem 0; }
+
+  .twist-wrap { margin-top: 1.25rem; }
+  .twist {
+    margin-top: .75rem; background: var(--navy); color: #fff; border-radius: 6px; padding: 1.1rem 1.25rem;
+    border-left: 8px solid var(--gold);
+  }
+  .twist[hidden] { display: none; }
+  .twist h3 { margin: 0 0 .35rem; font-family: var(--font-head); font-size: 1.05rem; color: var(--gold); }
+  .twist p { margin: 0 0 .5rem; }
+  .twist p:last-child { margin-bottom: 0; font-weight: 600; }
+
+  footer { max-width: 980px; margin: 0 auto; padding: 0 1.5rem 3rem; color: var(--muted); font-size: .95rem; }
+
+  @media (max-width: 560px) {
+    .verdict .hint { display: none; }
+    .verdict .label { font-size: .95rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
+  @media print {
+    .toolbar, .tally-row, .twist-wrap button { display: none; }
+    .twist[hidden] { display: block !important; }
+    .instructions { box-shadow: none; }
+    body { background: #fff; font-size: 11pt; }
+    .scenario { break-inside: avoid; }
+    details.phrases { display: block; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="course">Ethics in a Global World</p>
+    <h1>Ethical, Unethical, or It Depends?</h1>
+    <p class="sub">Three real-world problems. No easy answers. Your group has to decide, and defend the decision.</p>
+  </div>
+</header>
+
+<section class="instructions" aria-labelledby="inst-title">
+  <h2 id="inst-title">Instructions</h2>
+  <ul>
+    <li>You’ll work in small groups.</li>
+    <li>Read the 3 scenarios and discuss:
+      <ul>
+        <li>Is this Ethical, Unethical, or It Depends?</li>
+        <li>Why?</li>
+      </ul>
+    </li>
+    <li>Share your answer with the class.</li>
+  </ul>
+  <div class="toolbar">
+    <span class="timer" id="timer" role="timer" aria-live="off">05:00</span>
+    <button class="btn" id="timerStart" type="button">Start timer</button>
+    <button class="btn ghost" id="timerReset" type="button">Reset</button>
+    <label style="margin-left:auto;font-size:1rem;color:var(--muted)">
+      Minutes per scenario
+      <select id="timerLen" style="font:inherit;padding:.25rem .4rem;margin-left:.35rem">
+        <option value="180">3</option>
+        <option value="300" selected>5</option>
+        <option value="480">8</option>
+      </select>
+    </label>
+  </div>
+</section>
+
+<details class="phrases">
+  <summary>Useful phrases for your discussion</summary>
+  <div class="phrase-grid">
+    <div>
+      <h3>Give your opinion</h3>
+      <ul>
+        <li>I think this is … because …</li>
+        <li>In my opinion, the main problem is …</li>
+        <li>For me, what matters most is …</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Disagree politely</h3>
+      <ul>
+        <li>I see your point, but …</li>
+        <li>I understand, however …</li>
+        <li>What if …?</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Compare both sides</h3>
+      <ul>
+        <li>On the one hand … on the other hand …</li>
+        <li>It depends on …</li>
+        <li>In my culture … but in this country …</li>
+      </ul>
+    </div>
+  </div>
+</details>
+
+<main>
+
+  <!-- Scenario 1 -->
+  <article class="scenario" data-id="s1">
+    <h2>Scenario 1: The Thank-You Gift</h2>
+    <p class="where">Business ethics and local custom</p>
+    <div class="story">
+      <p>Maya owns a small coffee company. She wants to open a warehouse in a new country, and she needs an official permit. The official tells her the permit takes six months.</p>
+      <p class="quote">His assistant whispers: “Most businesses give a small thank-you gift of $200. Then it takes one week.”</p>
+      <p>In this country, everyone knows this is “how things work.” If Maya waits six months, her company may run out of money and she will have to fire 10 workers.</p>
+      <p>Maya pays the $200.</p>
+    </div>
+
+    <p class="ask">What does your group say about Maya’s decision?</p>
+    <div class="verdicts" role="group" aria-label="Group verdicts for Scenario 1">
+      <button class="verdict" data-v="ethical" type="button"><span class="label">Ethical</span><span class="count">0</span><span class="hint">Tap for each group</span></button>
+      <button class="verdict" data-v="depends" type="button"><span class="label">It Depends</span><span class="count">0</span><span class="hint">Tap for each group</span></button>
+      <button class="verdict" data-v="unethical" type="button"><span class="label">Unethical</span><span class="count">0</span><span class="hint">Tap for each group</span></button>
+    </div>
+    <div class="tally-bar" aria-hidden="true"><span class="b-ethical"></span><span class="b-depends"></span><span class="b-unethical"></span></div>
+    <div class="tally-row"><span class="total" aria-live="polite">0 groups have answered</span><button class="link-btn undo" type="button">Undo last</button></div>
+
+    <div class="push">
+      <h3>Push your group</h3>
+      <ul>
+        <li>What is the difference between a gift and a bribe?</li>
+        <li>Who decides what is right: the local culture, or the law in Maya’s home country?</li>
+        <li>Is Maya responsible for her 10 workers more than for the official’s country’s rules?</li>
+      </ul>
+    </div>
+
+    <div class="twist-wrap">
+      <button class="btn ghost reveal" type="button" aria-expanded="false">Reveal the twist</button>
+      <div class="twist" hidden>
+        <h3>The twist</h3>
+        <p>Later, Maya learns that $200 is almost one month of the official’s salary. She also learns that a competitor refused to pay and is still waiting for a permit.</p>
+        <p>Does your answer change? Why, or why not?</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- Scenario 2 -->
+  <article class="scenario" data-id="s2">
+    <h2>Scenario 2: The Three-Dollar Question</h2>
+    <p class="where">Global trade and responsibility</p>
+    <div class="story">
+      <p>A fashion brand sells T-shirts in Europe. Its factory in another country pays workers $4 a day. This is legal, and it is higher than the average pay for jobs nearby.</p>
+      <p>A group of activists demands $8 a day. If the brand agrees, each T-shirt will cost more. The brand says it may move production to another country instead, and 3,000 workers would lose their jobs.</p>
+      <p class="quote">“A low-paying job is better than no job,” says the brand’s manager.</p>
+      <p>The brand decides to keep paying $4 a day.</p>
+    </div>
+
+    <p class="ask">What does your group say about the brand’s decision?</p>
+    <div class="verdicts" role="group" aria-label="Group verdicts for Scenario 2">
+      <button class="verdict" data-v="ethical" type="button"><span class="label">Ethical</span><span class="count">0</span><span class="hint">Tap for each group</span></button>
+      <button class="verdict" data-v="depends" type="button"><span class="label">It Depends</span><span class="count">0</span><span class="hint">Tap for each group</span></button>
+      <button class="verdict" data-v="unethical" type="button"><span class="label">Unethical</span><span class="count">0</span><span class="hint">Tap for each group</span></button>
+    </div>
+    <div class="tally-bar" aria-hidden="true"><span class="b-ethical"></span><span class="b-depends"></span><span class="b-unethical"></span></div>
+    <div class="tally-row"><span class="total" aria-live="polite">0 groups have answered</span><button class="link-btn undo" type="button">Undo last</button></div>
+
+    <div class="push">
+      <h3>Push your group</h3>
+      <ul>
+        <li>Is “legal” the same as “ethical”?</li>
+        <li>Who should decide what a fair wage is: the company, the government, or the workers?</li>
+        <li>Should customers pay more for T-shirts? Would you?</li>
+      </ul>
+    </div>
+
+    <div class="twist-wrap">
+      <button class="btn ghost reveal" type="button" aria-expanded="false">Reveal the twist</button>
+      <div class="twist" hidden>
+        <h3>The twist</h3>
+        <p>A news report shows that workers in the factory work 12-hour days and the building has no fire exits. The factory owner says, “The brand never asked about this.”</p>
+        <p>Does the brand have a responsibility for what happens inside a factory it does not own?</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- Scenario 3 -->
+  <article class="scenario" data-id="s3">
+    <h2>Scenario 3: Helping a Friend</h2>
+    <p class="where">Culture, loyalty, and rules</p>
+    <div class="story">
+      <p>Ali is an international student. In his home country, students help each other with homework, and sharing answers shows friendship and respect.</p>
+      <p>At his new school, the rule is clear: all homework must be done alone. His friend Sara is new to the language and is falling behind. She asks to copy his answers.</p>
+      <p class="quote">“Please, Ali. If I fail this class, I have to go home.”</p>
+      <p>Ali knows the rule. He shares his answers anyway.</p>
+    </div>
+
+    <p class="ask">What does your group say about Ali’s decision?</p>
+    <div class="verdicts" role="group" aria-label="Group verdicts for Scenario 3">
+      <button class="verdict" data-v="ethical" type="button"><span class="label">Ethical</span><span class="count">0</span><span class="hint">Tap for each group</span></button>
+      <button class="verdict" data-v="depends" type="button"><span class="label">It Depends</span><span class="count">0</span><span class="hint">Tap for each group</span></button>
+      <button class="verdict" data-v="unethical" type="button"><span class="label">Unethical</span><span class="count">0</span><span class="hint">Tap for each group</span></button>
+    </div>
+    <div class="tally-bar" aria-hidden="true"><span class="b-ethical"></span><span class="b-depends"></span><span class="b-unethical"></span></div>
+    <div class="tally-row"><span class="total" aria-live="polite">0 groups have answered</span><button class="link-btn undo" type="button">Undo last</button></div>
+
+    <div class="push">
+      <h3>Push your group</h3>
+      <ul>
+        <li>Should you follow the rules of the place you are in, or the values you grew up with?</li>
+        <li>Is loyalty to a friend more important than a fair rule?</li>
+        <li>Is there a better way for Ali to help Sara?</li>
+      </ul>
+    </div>
+
+    <div class="twist-wrap">
+      <button class="btn ghost reveal" type="button" aria-expanded="false">Reveal the twist</button>
+      <div class="twist" hidden>
+        <h3>The twist</h3>
+        <p>Sara gets a higher grade than three students who worked alone. One of them loses a scholarship because of a grade that is 0.5 points lower.</p>
+        <p>Does your answer change now that someone else has been affected?</p>
+      </div>
+    </div>
+  </article>
+
+</main>
+
+<footer>
+  <p>Teacher tip: before showing the twists, ask each group to defend its first answer. Then reveal one twist at a time and ask which groups want to change their answer, and why. Changing your mind for a good reason is a strength, not a weakness.</p>
+</footer>
+
+<script>
+(function () {
+  // ----- Verdict tallies -----
+  document.querySelectorAll('.scenario').forEach(function (sc) {
+    var counts = { ethical: 0, depends: 0, unethical: 0 };
+    var history = [];
+    var buttons = sc.querySelectorAll('.verdict');
+    var bars = {
+      ethical: sc.querySelector('.b-ethical'),
+      depends: sc.querySelector('.b-depends'),
+      unethical: sc.querySelector('.b-unethical')
+    };
+    var total = sc.querySelector('.total');
+
+    function render() {
+      var n = counts.ethical + counts.depends + counts.unethical;
+      buttons.forEach(function (b) { b.querySelector('.count').textContent = counts[b.dataset.v]; });
+      Object.keys(bars).forEach(function (k) {
+        bars[k].style.width = n ? (counts[k] / n * 100) + '%' : '0';
+      });
+      total.textContent = n + (n === 1 ? ' group has answered' : ' groups have answered');
+    }
+
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () {
+        counts[b.dataset.v]++;
+        history.push(b.dataset.v);
+        b.classList.remove('pulse'); void b.offsetWidth; b.classList.add('pulse');
+        render();
+      });
+    });
+
+    sc.querySelector('.undo').addEventListener('click', function () {
+      var last = history.pop();
+      if (last) { counts[last]--; render(); }
+    });
+
+    // Twist reveal
+    var reveal = sc.querySelector('.reveal');
+    var twist = sc.querySelector('.twist');
+    reveal.addEventListener('click', function () {
+      var open = twist.hidden;
+      twist.hidden = !open;
+      reveal.setAttribute('aria-expanded', String(open));
+      reveal.textContent = open ? 'Hide the twist' : 'Reveal the twist';
+    });
+  });
+
+  // ----- Timer -----
+  var timerEl = document.getElementById('timer');
+  var startBtn = document.getElementById('timerStart');
+  var resetBtn = document.getElementById('timerReset');
+  var lenSel = document.getElementById('timerLen');
+  var remaining = parseInt(lenSel.value, 10);
+  var tick = null;
+
+  function fmt(s) {
+    var m = Math.floor(s / 60), r = s % 60;
+    return (m < 10 ? '0' : '') + m + ':' + (r < 10 ? '0' : '') + r;
+  }
+  function draw() { timerEl.textContent = fmt(remaining); }
+  function stop() { clearInterval(tick); tick = null; startBtn.textContent = 'Start timer'; }
+
+  function beep() {
+    try {
+      var ctx = new (window.AudioContext || window.webkitAudioContext)();
+      var o = ctx.createOscillator(), g = ctx.createGain();
+      o.connect(g); g.connect(ctx.destination);
+      o.frequency.value = 660; g.gain.value = 0.15;
+      o.start(); o.stop(ctx.currentTime + 0.6);
+    } catch (e) {}
+  }
+
+  startBtn.addEventListener('click', function () {
+    if (tick) { stop(); return; }
+    if (remaining <= 0) remaining = parseInt(lenSel.value, 10);
+    startBtn.textContent = 'Pause';
+    tick = setInterval(function () {
+      remaining--;
+      draw();
+      if (remaining <= 0) { stop(); beep(); timerEl.textContent = 'Time!'; }
+    }, 1000);
+  });
+  resetBtn.addEventListener('click', function () {
+    stop(); remaining = parseInt(lenSel.value, 10); draw();
+  });
+  lenSel.addEventListener('change', function () {
+    stop(); remaining = parseInt(lenSel.value, 10); draw();
+  });
+})();
+</script>
+</body>
+</html>
